@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/02f634ae9e.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="css/shopping.css">
+    <script defer src="js/shopping.js"></script>
+    <title>쇼핑몰</title>
+    
+</head>
+
+<body>
+    <header class="header">
+        <a href="../jh/main.html" style="margin-left: 1em; margin-top: 0.5em;">
+            <i class="logoIcon fa-solid fa-train" style="font-size: 32px; display: contents;" id="list"></i>
+        </a>
+        <h2>나의 쇼핑몰</h2>
+        <div class="search-container">
+            <input type="text" id="search" placeholder="상품을 검색하세요..." />
+            <button id="search-button"><i class="fas fa-search"></i></button>
+        </div>
+        <nav class="navbar">
+            <ul>
+                <li><a href="shopping.html">홈</a></li>
+                <li><a href="cart.html">장바구니</a></li>
+                <li><a href="inquiry.html">문의하기</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="product-container">
+        <div class="product-card" onclick="location.href='mjeans.html'">
+            <img src="img/mjeans.png" alt="상품 이미지">
+            <h4>남성용 데님 청바지</h4>
+            <p>가격: 10,000원</p>
+            <button class="add-to-cart">장바구니에 담기</button>
+        </div>
+        <div class="product-card" onclick="location.href='wjeans.html'">
+            <img src="img/wjeans.png" alt="상품 이미지">
+            <h4>여성용 데님 청바지</h4>
+            <p>가격: 20,000원</p>
+            <button class="add-to-cart">장바구니에 담기</button>
+        </div>
+        <div class="product-card" onclick="location.href='jacket.html'">
+            <img src="img/jacket.png" alt="상품 이미지">
+            <h4>베이직 트러커 자켓</h4>
+            <p>가격: 30,000원</p>
+            <button class="add-to-cart">장바구니에 담기</button>
+        </div>
+        <div class="product-card" onclick="location.href='padding.html'">
+            <img src="img/padding.png" alt="상품 이미지">
+            <h4>베이직 오리털 패딩</h4>
+            <p>가격: 40,000원</p>
+            <button class="add-to-cart">장바구니에 담기</button>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2024 쇼핑몰. All Rights Reserved.</p>
+    </footer>
+
+</body>
+
+</html>

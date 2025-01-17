@@ -1,0 +1,123 @@
+<div class="wupmenu">
+    <ul class="upMenu">
+        <li class="towardEmailHome"><a href="../ym/emailReceive.html">Email</a></li>
+        <li class="sortImage"><a href="../th1/member.html">Images</a></li>
+        <li class="newFunc">
+            <a href="../jh/newfunc.html">
+                <i class="fa-solid fa-champagne-glasses"></i>
+            </a>
+        </li>
+        <li class="headerbox-parent">
+            <i onclick="showBox()" class="headerbox-container fa-solid fa-list-ul">
+            </i>
+            <div class="headerbox-element" style="z-index: 1000;">
+                <div class="headerbox-div" style="color: white; text-align: center;">
+                    <div class="headerbox-row">
+                        <a class="headerbox-column" href="../jh/main.html">
+                            M
+                        </a>
+                        <a class="headerbox-column" href="../jh/login.html">
+                            L
+                        </a>
+                        <a class="headerbox-column" href="../jh/newfunc.html">
+                            N
+                        </a>
+                    </div>
+                    <div class="headerbox-row">
+                        <a class="headerbox-column" href="../jh/pw-reset.html">
+                            R
+                        </a>
+                        <a class="headerbox-column" href="../jh/signup.html">
+                            S
+                        </a>
+                        <a class="headerbox-column" href="../th1/member.html">
+                            P
+                        </a>
+                    </div>
+                    <div class="headerbox-row">
+                        <a class="headerbox-column" href="../th2/shopping.html">
+                            Sh
+                        </a>
+                        <a class="headerbox-column" href="../yh/home.html">
+                            My
+                        </a>
+                        <a class="headerbox-column" href="../yh/im.html">
+                            info
+                        </a>
+                    </div>
+                    <div class="headerbox-row">
+                        <a class="headerbox-column" href="../ym/emailReceive.html">
+                            E
+                        </a>
+                        <a class="headerbox-column"></a>
+                        <a class="headerbox-column"></a>
+                    </div>
+                </div>
+            </div>
+        </li>
+        <li class="">
+            <a href="../jh/login.html">
+                <input type="button" value="Login" class="loginBtn">
+            </a>
+        </li>
+        <li class="profile"></li>
+    </ul>
+</div>
+<style>
+    .headerbox-parent{
+        width: 1em;
+        height: 1em;
+    }
+
+    .headerbox-element {
+        transition: 0.2s;
+        display: none;
+        position: relative;
+        width: 13em;
+        height: 19em;
+        top: 3.5em;
+        left: -10em;
+        border-radius: 1em;
+        background-color: rgb(228, 228, 252);
+        overflow: auto;
+    }
+
+    .headerbox-element-visible {
+        display: flex;
+        transform: scale(1.3);
+    }
+
+    .headerbox-element .headerbox-div {
+        width: 12em;
+        height: 18em;
+        margin: 0.5em;
+        border-radius: 0.7em;
+        background-color: white;
+        display: flex;
+        position: absolute;
+        flex-wrap: wrap;
+        overflow: auto;
+    }
+
+
+    .headerbox-row .headerbox-column{
+        width: 2.625em;
+        height: 2.625em;
+        border-radius: 50%;
+        background-color: black;
+        margin: 0.5em;
+    }
+    .headerbox-row{
+        height: 3.625em;
+        display: flex;
+        flex-wrap: nowrap;
+        overflow: hidden;
+        flex-direction: row;
+        margin-left: 0.5em;
+        margin-top: 0.5em;
+    }
+    .headerbox-column{
+        text-wrap: nowrap;
+        line-height: 2.5em;
+    }
+</style>

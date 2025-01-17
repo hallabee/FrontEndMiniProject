@@ -1,0 +1,307 @@
+/* 기본 스타일 설정 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #fff;
+    color: #000;
+    line-height: 1.6;
+    font-size: 100%;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+/* 다크모드 스타일 */
+.dark-mode {
+    background-color: #121212;
+    color: #fff;
+}
+
+/* 전체 컨테이너 */
+.container {
+    display: flex;
+    flex-direction: row;
+}
+
+/* 왼쪽 사이드바 스타일 */
+.sidebar {
+    width: 20%;
+    background-color: #f0f0f0;
+    padding: 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    transition: background-color 0.3s;
+}
+
+.dark-mode .sidebar {
+    background-color: #333;
+}
+
+/* 로고 스타일 */
+.logo {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #000;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.dark-mode .logo {
+    color: #fff;
+}
+
+/* 헤더 스타일 */
+header {
+    background-color: #f0f0f0;
+    padding: 20px 0;
+}
+
+header .inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+header h1 {
+    margin-left: 40px; /* DCODLAB을 더 오른쪽으로 이동 */
+}
+
+header h1 a {
+    font-size: 24px;
+    text-decoration: none;
+    color: #000;
+}
+
+header #gnb {
+    display: flex;
+    list-style: none;
+    gap: 20px;
+}
+
+header #gnb li a {
+    text-decoration: none;
+    color: #000;
+}
+
+header .util {
+    display: flex;
+    list-style: none;
+    gap: 15px;
+}
+
+header .util li a {
+    text-decoration: none;
+    color: #000;
+}
+
+/* 다크모드/화이트모드 전환 버튼과 정렬 버튼을 포함하는 컨테이너 */
+.theme-and-sort-container {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    position: absolute;
+    top: 20px; /* 필요에 따라 조정 */
+    right: 20px; /* 화면 오른쪽에 배치 */
+}
+
+/* 다크모드/화이트모드 전환 버튼 스타일 */
+.toggle-theme-btn {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.toggle-theme-btn img {
+    width: 30px;
+    height: 30px;
+    transition: opacity 0.3s;
+}
+
+.dark-mode .toggle-theme-btn img.light-mode-icon {
+    opacity: 0;
+}
+
+.dark-mode .toggle-theme-btn img.dark-mode-icon {
+    opacity: 1;
+}
+
+.toggle-theme-btn img.dark-mode-icon {
+    opacity: 0;
+}
+
+/* 정렬 버튼 스타일 */
+.sort-btn-container {
+    display: flex;
+    gap: 10px;
+}
+
+.sort-btn {
+    background-color: #f0f0f0;
+    border: 2px solid #000;
+    color: #000;
+    font-size: 1rem;
+    padding: 5px 10px;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+}
+
+.sort-btn:hover {
+    background-color: #000;
+    color: #fff;
+    transform: translateY(-3px);
+}
+
+.dark-mode .sort-btn {
+    background-color: #333;
+    color: #fff;
+    border-color: #fff;
+}
+
+.dark-mode .sort-btn:hover {
+    background-color: #fff;
+    color: #000;
+}
+
+/* 메인 콘텐츠 스타일 */
+.main-content {
+    width: 80%;
+    padding: 2.5rem;
+    background-color: #fff;
+    color: #000;
+    margin-left: 20%;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.dark-mode .main-content {
+    background-color: #222;
+    color: #fff;
+}
+
+/* 그리드 레이아웃 */
+.cont__area {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-auto-rows: minmax(200px, auto);
+    gap: 1.25rem;
+    perspective: 1000px;
+}
+
+/* 콘텐츠 아이템 */
+.cont__item {
+    width: 100%;
+    margin-bottom: 2rem;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 15px;
+    padding: 1.25rem;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+    transition: transform 0.5s ease, background-color 0.3s ease;
+    transform-style: preserve-3d;
+    position: relative;
+}
+
+.cont__item:hover {
+    transform: rotateY(15deg);
+    background: rgba(255, 255, 255, 0.3);
+}
+
+/* 이미지 스타일 */
+.cont__image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    object-position: center;
+    margin-bottom: 10px;
+    transition: transform 0.3s ease;
+    transform: scale(1);
+}
+
+.cont__item:hover .cont__image {
+    transform: scale(1.1);
+}
+
+/* 텍스트 스타일 */
+.text-wrap {
+    padding: 1.25rem;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: #fff;
+    text-align: center;
+    backdrop-filter: blur(5px);
+    word-wrap: break-word;
+    white-space: normal;
+    max-height: 100px;
+    overflow-y: auto;
+}
+
+/* 푸터 스타일 */
+.footer {
+    background-color: #000;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    margin-top: auto;
+}
+
+/* 반응형 디자인 */
+@media screen and (max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+        height: auto;
+        position: static;
+        text-align: center;
+    }
+
+    .main-content {
+        width: 100%;
+        margin-left: 0;
+    }
+
+    .cont__area {
+        grid-template-columns: 1fr;
+    }
+
+    .cont__item {
+        width: calc(100% - 20px);
+    }
+}
+
+/* 푸터를 화면 하단에 고정하는 스타일 */
+html, body {
+    height: 100%;
+}
+
+.main-content {
+    flex: 1;
+}
+
+footer {
+    background-color: #000;
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}

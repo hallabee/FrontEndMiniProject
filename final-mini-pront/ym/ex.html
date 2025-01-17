@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>이메일 입력</title>
+    <script>
+        function validateEmail() {
+            const emailInput = document.getElementById("email").value;
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+            if (!emailPattern.test(emailInput)) {
+                alert("유효한 이메일 형식이 아닙니다.");
+            } else {
+                alert("유효한 이메일입니다.");
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>이메일 입력</h1>
+    <input type="text" id="email" placeholder="이메일 입력">
+    <button onclick="validateEmail()">확인</button>
+</body>
+</html>

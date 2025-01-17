@@ -1,0 +1,160 @@
+@charset "utf-8";
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background-color: #f9f9f9;
+    font-size: 1.5vw;
+}
+
+.header {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.header #list{
+    position: absolute;
+    left: 1%;
+    font-size: 1.5vw;
+}
+
+.header-title{
+    margin-left: 5%;
+}
+
+.navbar ul {
+    list-style: none;
+    display: flex;
+}
+
+.navbar ul li {
+    margin: 0 15px;
+}
+
+.navbar a {
+    color: white;
+    text-decoration: none;
+    padding: 5px;
+}
+
+nav ul li a:hover {
+    background: #fff;
+    color: black;  /* 색상을 원하는 대로 변경할 수 있습니다 */
+}
+
+.container {
+    padding: 20px;
+}
+
+.cart-item {
+    display: flex;
+    justify-content: space-between; /* 항목을 양 끝으로 정렬 */
+    align-items: center; /* 수직 정렬 */
+    background-color: white;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.product-image {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    margin-right: 20px;
+}
+
+.item-details {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1; /* 공간을 더 차지하게 설정 */
+}
+
+.item-info {
+    display: flex; /* 플렉스 박스 사용 */
+    flex-direction: row; /* 수평 정렬 */
+    align-items: center; /* 수직 중앙 정렬 */
+}
+
+.product-name {
+    font-size: 1.5vw;
+    margin-bottom: 5px;
+}
+
+.product-price {
+    font-size: 1.5vw;
+    margin-bottom: 5px;
+    margin-left: 3%;
+}
+
+.item-quantity {
+    width: 60px;
+    margin-bottom: 10px;
+    margin-left: 3%;
+}
+
+.remove-button {
+    background-color: #ff4d4d;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    right: 10%;
+}
+
+.remove-button:hover {
+    background-color: #e60000;
+}
+
+.cart-summary {
+    margin-top: 20px;
+    text-align: right;
+}
+
+.total-price {
+    font-weight: bold;
+}
+
+.checkout-button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.checkout-button:hover {
+    background-color: #45a049;
+}
+
+.footer {
+    background-color: #f1f1f1;
+    text-align: center;
+    font-size: 1vw;
+    padding: 10px 0;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+}
+.contact-container {
+    max-width: 70%;
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.contact-container h3{
+    text-align: center;
+}

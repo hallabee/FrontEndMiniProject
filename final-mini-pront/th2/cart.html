@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>장바구니</title>
+    <script src="https://kit.fontawesome.com/02f634ae9e.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="css/cart.css">
+    <script defer src="js/cart.js"></script>
+</head>
+
+<body>
+    <header class="header">
+        <i class="fa-solid fa-list" id="list"></i>
+        <h2 class="header-title">장바구니</h2>
+        <nav class="navbar">
+            <ul>
+                <li><a href="shopping.html">홈</a></li>
+                <li><a href="cart.html">장바구니</a></li>
+                <li><a href="inquiry.html">문의하기</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main class="contact-container">
+        <h3>장바구니</h3>
+        <div class="container">
+            <div class="cart-item">
+                <img src="img/mjeans.png" alt="상품 이미지" class="product-image">
+                <div class="item-details">
+                    <div class="item-info">
+                        <h2 class="product-name">남성용 데님 청바지</h2>
+                        <p class="product-price">₩10,000</p>
+                        <input type="number" class="item-quantity" value="1">
+                    </div>
+                </div>
+                <button class="remove-button">삭제</button>
+            </div>
+    
+            <div class="cart-item">
+                <img src="img/wjeans.png" alt="상품 이미지" class="product-image">
+                <div class="item-details">
+                    <div class="item-info">
+                        <h2 class="product-name">여성용 데님 청바지</h2>
+                        <p class="product-price">₩20,000</p>
+                        <input type="number" class="item-quantity" value="1">
+                    </div>
+                </div>
+                <button class="remove-button">삭제</button>
+            </div>
+
+            <div class="cart-item">
+                <img src="img/jacket.png" alt="상품 이미지" class="product-image">
+                <div class="item-details">
+                    <div class="item-info">
+                        <h2 class="product-name">베이직 트러커 자켓</h2>
+                        <p class="product-price">₩30,000</p>
+                        <input type="number" class="item-quantity" value="1">
+                    </div>
+                </div>
+                <button class="remove-button">삭제</button>
+            </div>
+
+            <div class="cart-item">
+                <img src="img/padding.png" alt="상품 이미지" class="product-image">
+                <div class="item-details">
+                    <div class="item-info">
+                        <h2 class="product-name">베이직 오리털 패딩</h2>
+                        <p class="product-price">₩40,000</p>
+                        <input type="number" class="item-quantity" value="1">
+                    </div>
+                </div>
+                <button class="remove-button">삭제</button>
+            </div>
+    
+            <div class="cart-summary">
+                <p>총 합계: <span class="total-price">₩0</span></p>
+                <button class="checkout-button">결제하기</button>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2024 쇼핑몰. All Rights Reserved.</p>
+    </footer>
+
+</body>
+
+</html>

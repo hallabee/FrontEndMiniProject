@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SVG Text Animation</title>
+    <style>
+        .stroke {
+            fill: none;
+            stroke: black;
+            stroke-width: 3;
+            stroke-dasharray: 500; /* 긴 길이 설정 */
+            stroke-dashoffset: 500;
+            animation: draw 2s forwards;
+        }
+
+        @keyframes draw {
+            to {
+                stroke-dashoffset: 0;
+            }
+        }
+
+        .delay-1 { animation-delay: 0.5s; }
+        .delay-2 { animation-delay: 1s; }
+        .delay-3 { animation-delay: 1.5s; }
+        .rotate-90 { transform: rotate(90deg); } /* 90도 ���전 */
+    </style>
+</head>
+<body>
+    <svg width="400" height="200" xmlns="http://www.w3.org/2000/svg">
+        <!-- 첫 번째 획 -->
+        <path d="M50 50 L150 50" class="stroke delay-1" />
+        <!-- 두 번째 획 -->
+        <path d="M150 50 S50 100 150 150" class="stroke delay-2" />
+
+        <!-- 세 번째 획 -->
+        <path d="M50 150 L150 150" class="stroke delay-3" />
+    </svg>
+
+</body>
+</html>

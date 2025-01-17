@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>계정 관리 마이페이지</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <script src="../jh/js/header.js"></script>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="../jh/style.css">
+</head>
+
+<body>
+  <div class="bgcolor wpanel" style="font-size: 16px;">
+    <div class="upMenu-header" style="font-size: 16px; font-family: Arial, sans-serif; margin-bottom: 2em;">
+    </div>
+    <script>
+        fetch('../jh/component/header.html').then(response => response.text()).then(data => {
+            document.querySelector('.upMenu-header').innerHTML = data;
+        });
+    </script>
+    <hr style="opacity: 0.3;">
+  <div class="container">
+    <!-- 사이드바 메뉴 -->
+    <nav class="sidebar">
+      <button onclick="showSection('home')" aria-label="홈">
+        <img src="img/home.jpg" alt="홈 아이콘" class="icon"> 홈
+      </button>
+      <button onclick="showSection('personal-info')" aria-label="개인정보">
+        <img src="img/personal-icon.png" alt="개인 정보 아이콘" class="icon"> 개인정보
+      </button>
+      <button onclick="showSection('privacy')" aria-label="개인정보 보호">
+        <img src="img/privacy-icon.png" alt="개인정보 보호 아이콘" class="icon"> 개인정보 보호
+      </button>
+      <button onclick="showSection('security')" aria-label="보안">
+        <img src="img/security-icon.jpg" alt="보안 아이콘" class="icon"> 보안
+      </button>
+    </nav>
+
+    <!-- 메인 콘텐츠 영역 -->
+    <main>
+      <!-- 저장 메시지 -->
+      <div id="save-message" class="message" style="display:none;"></div>
+      
+      <!-- 로딩 애니메이션 -->
+      <div id="loading" class="loading-spinner" style="display: none;">저장 중...</div>
+      
+      <!-- 홈 섹션 -->
+      <section id="home" class="content-section active">
+        <h2 id="welcome-message">OOO님, 환영합니다</h2>
+        <p>아래에서 계정 상태를 확인하고 관리할 수 있습니다.</p>
+        <br>
+        <!-- 프로필 정보 표시 -->
+        <div id="profile-summary" class="profile-summary">
+          <img id="profile-image-home" src="" alt="프로필 사진" style="display:none; max-width: 100px; margin-top: 10px;">
+          <p><strong>이름:</strong> <span id="profile-name-home">이름이 없습니다.</span></p>
+          <p><strong>이메일:</strong> <span id="profile-email-home">이메일이 없습니다.</span></p>
+          <p><strong>전화번호:</strong> <span id="profile-phone-home">전화번호가 없습니다.</span></p>
+        </div>
+      </section>
+
+      <!-- 개인 정보 섹션 -->
+      <section id="personal-info" class="content-section">
+        <h2>개인 정보</h2>
+        <p>다양한 서비스에서 사용되는 내 정보입니다.</p>
+        <br>
+        <!-- 기본 정보 수정 -->
+        <div class="form-group">
+          <label for="user-name">이름:</label>
+          <input type="text" id="user-name" aria-label="이름 입력" required>
+        </div>
+
+        <div class="form-group">
+          <label for="user-email">이메일:</label>
+          <input type="email" id="user-email" aria-label="이메일 입력" required>
+        </div>
+
+        <div class="form-group">
+          <label for="user-phone">전화번호:</label>
+          <input type="tel" id="user-phone" aria-label="전화번호 입력" required>
+        </div>
+
+        <!-- 프로필 사진 업로드 -->
+        <div class="form-group">
+          <label for="profile-photo">프로필 사진:</label>
+          <input type="file" id="profile-photo" aria-label="프로필 사진 업로드" onchange="previewProfilePhoto()">
+          <img id="profile-photo-preview" alt="프로필 사진 미리보기" style="display:none; max-width: 100px; margin-top: 10px;">
+        </div>
+        <button onclick="savePersonalInfo()">저장</button>
+      </section>
+
+      <!-- 개인정보 보호 섹션 -->
+      <section id="privacy" class="content-section">
+        <h2>개인 정보 보호</h2>
+        <p>데이터 저장 및 삭제 설정을 관리하세요.</p>
+
+        <!-- 데이터 다운로드 옵션 -->
+        <button onclick="downloadUserData()">내 데이터 다운로드</button>
+        <button onclick="deleteAccount()">내 데이터 삭제</button>
+
+        <!-- 연결된 앱 및 서비스 관리 -->
+        <h3>연결된 앱 및 서비스</h3>
+        <ul>
+          <li>서비스 A <button onclick="revokeAccess('서비스 A')">접근 권한 철회</button></li>
+          <li>서비스 B <button onclick="revokeAccess('서비스 B')">접근 권한 철회</button></li>
+        </ul>
+
+        <!-- 쿠키 및 추적 관리 -->
+        <h3>쿠키 및 추적 관리</h3>
+        <button onclick="manageCookies()">쿠키 관리</button>
+
+        <!-- 데이터 사용 이력 확인 -->
+        <h3>데이터 사용 이력</h3>
+        <ul>
+          <li>2024년 9월 24일 - 이메일 주소 변경</li>
+          <li>2024년 9월 23일 - 새로운 기기에서 로그인</li>
+        </ul>
+
+        <!-- 개인정보 처리 방침 안내 -->
+        <h3>개인정보 처리 방침</h3>
+        <p>개인정보 처리 방침을 확인하려면 <a href="#">여기를 클릭하세요.</a></p>
+      </section>
+
+      <!-- 보안 섹션 -->
+      <section id="security" class="content-section">
+        <h2>보안</h2>
+        <p>비밀번호 및 2단계 인증 설정을 관리하세요.</p>
+        <button onclick="setup2FA()">2단계 인증 설정</button>
+        <p>보안을 강화하려면 2단계 인증을 설정하세요.</p>
+      </section>
+    </main>
+  </div>
+
+  <footer>
+    <p>계정 관리 © 2024</p>
+  </footer>
+
+  <script>
+    // 섹션 전환 함수
+    function showSection(sectionId) {
+      var sections = document.querySelectorAll('.content-section');
+      sections.forEach(function (section) {
+        section.classList.remove('active');
+      });
+      document.getElementById(sectionId).classList.add('active');
+    }
+
+    // 프로필 사진 미리보기 함수
+    function previewProfilePhoto() {
+      const fileInput = document.getElementById('profile-photo');
+      const preview = document.getElementById('profile-photo-preview');
+      
+      const file = fileInput.files[0];
+      const reader = new FileReader();
+      
+      reader.onloadend = function () {
+        preview.src = reader.result;
+        preview.style.display = 'block';
+      }
+      
+      if (file) {
+        reader.readAsDataURL(file);
+      } else {
+        preview.src = '';
+        preview.style.display = 'none';
+      }
+    }
+
+    // 개인정보 저장 함수 (localStorage 사용)
+    function savePersonalInfo() {
+      const name = document.getElementById('user-name').value;
+      const email = document.getElementById('user-email').value;
+      const phone = document.getElementById('user-phone').value;
+      const profilePhoto = document.getElementById('profile-photo-preview').src;
+
+      if (!name || !email || !phone) {
+        alert('모든 정보를 입력하세요.');
+        return;
+      }
+
+      // localStorage에 저장
+      localStorage.setItem('name', name);
+      localStorage.setItem('email', email);
+      localStorage.setItem('phone', phone);
+      localStorage.setItem('profilePhoto', profilePhoto);
+
+      // 저장 완료 메시지
+      showTemporaryMessage('개인 정보가 성공적으로 저장되었습니다.');
+
+      // 홈 화면에 사용자 정보 반영
+      applyProfileToHome();
+    }
+
+    // 임시 저장 메시지 표시
+    function showTemporaryMessage(message) {
+      const messageDiv = document.getElementById('save-message');
+      messageDiv.textContent = message;
+      messageDiv.style.display = 'block';
+      setTimeout(() => {
+        messageDiv.style.display = 'none';
+      }, 3000);
+    }
+
+    // 페이지 로드 시 저장된 정보 불러오기 및 홈 화면에 반영
+    window.onload = function () {
+      applyProfileToHome();
+    };
+
+    function applyProfileToHome() {
+      const savedName = localStorage.getItem('name');
+      const savedEmail = localStorage.getItem('email');
+      const savedPhone = localStorage.getItem('phone');
+      const savedPhoto = localStorage.getItem('profilePhoto');
+
+      if (savedName) {
+        document.getElementById('welcome-message').innerText = `${savedName}님, 환영합니다`;
+        document.getElementById('profile-name-home').innerText = savedName;
+      }
+      if (savedEmail) {
+        document.getElementById('profile-email-home').innerText = savedEmail;
+      }
+      if (savedPhone) {
+        document.getElementById('profile-phone-home').innerText = savedPhone;
+      }
+      if (savedPhoto) {
+        const profileImageHome = document.getElementById('profile-image-home');
+        profileImageHome.src = savedPhoto;
+        profileImageHome.style.display = 'block';
+      }
+    }
+
+    // 데이터 다운로드 함수
+    function downloadUserData() {
+      alert("데이터 다운로드가 시작되었습니다.");
+    }
+
+    // 데이터 삭제 함수
+    function deleteAccount() {
+      if (confirm("계정을 삭제하면 모든 데이터가 영구적으로 삭제됩니다. 진행하시겠습니까?")) {
+        alert("계정이 삭제되었습니다.");
+      }
+    }
+
+    // 접근 권한 철회 함수
+    function revokeAccess(service) {
+      if (confirm(`${service}의 접근 권한을 철회하시겠습니까?`)) {
+        alert(`${service}의 접근 권한이 철회되었습니다.`);
+      }
+    }
+
+    // 쿠키 관리 함수
+    function manageCookies() {
+      alert("쿠키 및 트래킹 설정 관리 창을 엽니다.");
+    }
+
+    // 2단계 인증 설정 함수
+    function setup2FA() {
+      alert("2단계 인증이 설정되었습니다.");
+    }
+
+  </script>
+</body>
+</html>

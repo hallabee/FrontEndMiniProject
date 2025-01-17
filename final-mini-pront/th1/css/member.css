@@ -1,0 +1,257 @@
+@charset "utf-8";
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+ul, ol, li{
+    list-style: none;
+}
+a{
+    text-decoration: none;
+    outline: 0;
+}
+
+body {
+    display: block;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+    font-size: 16px;
+    background-color: white;
+}
+
+.header {
+    width: 100%;            /* 전체 너비 */
+    height: 20vh;           /* 높이 20% */
+    display: block;          /* Flexbox 레이아웃 */
+    align-content: center;
+    /* top: 0;                 화면의 맨 위에 배치 */
+}
+
+.header-h1{
+    margin-top: 3em;
+    margin-bottom: 0.5em;
+    text-align: center;
+    font-size: 2em;
+}
+
+.container {
+    position: relative;     /* 자식 요소 위치를 설정하기 위한 기준 */
+}
+
+.nav-btn {
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.all-profiles .profile-list {
+    font-size: 16px;
+    display: flex;
+}
+
+/* 슬라이더 애니메이션 */
+.slider {
+    margin: 0;
+    display: inline-block;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    width: 80vw; /* 슬라이더 너비 */
+    height: 40vh;
+    overflow: hidden;
+    transition: transform 0.5s ease-in-out;
+}
+
+
+.profile-card {
+    width: 8em;
+    height: 14em;
+    margin: 5px;
+    background-color: lightgray;
+    display: block;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s, opacity 0.2s;
+    border-radius: 1em;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    position: relative;
+    z-index: 0;
+    opacity: 0.5; /* 기본적으로 흐리게 설정 */
+}
+
+.profile-card.active {
+    opacity: 1; /* 중앙 카드 완전하게 보임 */
+    z-index: 1;
+}
+
+.profile-card.prev, .profile-card.next {
+    opacity: 0.7; /* 좌우 카드 살짝 흐리게 */
+    height: 8em;
+}
+
+.profile-card.prev {
+    transform: rotate(-3deg) scale(0.9);
+    display: inline-block;
+    position: relative;
+}
+.profile-card.active {
+    display: inline-block;
+    position: relative;
+}
+.profile-card.next {
+    transform: rotate(3deg) scale(0.9);
+    display: inline-block;
+    position: relative;
+}
+
+
+.profile-img {
+    width: 4em;
+    height: 4em;
+    margin: auto;
+    margin-top: 1em;
+    border-radius: 50%;  /* 둥근 이미지 */
+    position: relative;
+    
+}
+
+h4{
+    margin-top: 1em;
+    text-align: center;
+    font-size: 1em;
+    color: black;
+}
+p, #fa-id{
+    text-align: center;
+    font-size: 0.1em;
+    color: black;
+}
+
+.buttons {
+    width: auto;
+    display: block;
+    margin: 0;
+    text-align: right;
+}
+
+.buttons button {
+    background-color: transparent; /* 배경을 투명하게 설정 */
+    border: none;
+    cursor: pointer;
+    margin-left: 1em;       /* 버튼 간의 간격 추가 */
+    font-size: 2em;
+}
+
+
+.arrow {
+    display: inline-block;
+    background-color: transparent; /* 배경을 투명하게 설정 */
+    cursor: pointer;
+    padding: 1em 2em;
+    font-size: 1em;               /* 화살표 크기 */
+    z-index: 1;
+}
+
+.arrow i {
+    color: black;                  /* 화살표 아이콘 색상 설정 (필요에 따라 수정 가능) */
+}
+
+
+@media (max-height: 450px) {
+    .buttons {
+        display: none; /* 화면 세로 크기가 600px 이하일 때 버튼 숨김 */
+    }
+    p{
+        display: none;
+    }
+}
+
+@media (max-height: 200px) {
+    #fa-id{
+        display: none;
+    }
+    .profile-card{
+        height: 35vh;
+    }
+}
+
+.slider.moving .profile-card {
+    transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+}
+
+.slider.moving .profile-card.prev {
+    transform: translateX(100%);
+    opacity: 0;
+}
+
+.slider.moving .profile-card.next {
+    transform: translateX(-100%);
+    opacity: 0;
+}
+
+.slider .profile-card.active {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+
+.card-container {
+    width: 80vh;
+    height: 50vh;
+    padding: 0;
+    vertical-align: middle;
+    text-align: center;
+}
+
+.arrow {
+    width: 1em;
+    height: 1em;
+    margin: 0;
+    padding: 0;
+    font-size: 3em;
+}
+
+.card-pos {
+    position: relative;
+}
+
+.pw-reset {
+    height: 100vh;
+}
+.card-container .arrow{
+    display: inline-block;
+    margin-bottom: 50%;
+}
+.slider {
+    justify-content: center;
+    align-content: center;
+}
+.btn-with-slider{
+    
+    align-content: center;
+    height: 30em;
+}
+p{
+    display: block;
+    text-wrap: wrap;
+    font-size: 6px;
+}
+i#fa-id{
+    margin: auto;
+    font-size: 8px;
+    padding: 0;
+    line-height: 3em;
+    width: 16em;
+    height: 1.5em;
+    display: block;
+}
+.inner-container{
+    text-align: center;
+    align-content: center;
+    text-wrap: nowrap;
+}

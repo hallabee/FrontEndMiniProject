@@ -1,0 +1,198 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    -webkit-user-select:none;
+  -moz-user-select:none;
+  -ms-user-select:none;
+  user-select:none
+}
+
+.container{
+    display: flex;
+    height: 100vh;
+}
+
+.header {
+    background-color: #1966e2;
+    color: white;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed; /* 고정 위치 */
+    top: 0; /* 상단에 배치 */
+    left: 0;
+    right: 0;
+    z-index: 1000; /* 다른 요소 위에 표시 */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.header .logout {
+    background-color: #ff5722;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.sidebar {
+    width: 220px;
+    background-color: #ffffff;
+    border-right: 1px solid #ddd;
+    padding: 10px 0;
+    margin-top: 110px; /* 헤더 높이 만큼 여백 추가 */
+}
+
+.sidebar ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.sidebar li {
+    padding: 20px;
+    margin: 10px;
+}
+
+.sidebar a {
+    text-decoration: none;
+    color: #333;
+    display: block;
+}
+
+
+
+.main-content {
+    flex: 1; 
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    margin-top: 110px; 
+    margin-left: 10px;
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.main-content .sender{
+    margin-left: 10px;
+    margin-bottom: 20px;
+    margin-top: 10px;
+    position: relative;
+}
+
+.main-content .receiver{
+    margin-left: 10px;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.main-content .title{
+    margin-left: 10px;
+    position: relative;
+}
+
+.main-content .email-content{
+    width: 98.5%;
+    height: 100%;
+    margin-left: 10px;
+    margin-bottom: 15px;
+    margin-top: 20px;
+}
+
+.main-content .sender #sender{
+    border: none;
+    border-bottom: 1px solid gray;
+    width: 100%;
+    font-size: 17px;
+   
+}
+
+.main-content .sender #sender:focus{
+    outline: none;
+}
+
+.main-content .receiver #receiver{
+    border: none;
+    border-bottom: 1px solid gray;
+    width: 100%;
+    font-size: 17px;
+    
+}
+
+.main-content .receiver #receiver:focus{
+    outline: none;
+}
+
+
+.main-content .title #title{
+    width: 100%;
+    font-size: 17px;
+    border: none;
+    border-bottom: 1px solid gray;
+}
+.main-content .title #title:focus{
+    outline: none;
+}
+
+.main-content .email-content textarea{
+    width: 100%;
+    height: 100%;
+    font-size: 15px;
+    resize: none;
+    border: none;
+}
+
+.main-content .email-content textarea:focus{
+    outline: none;
+}
+
+
+.header button:hover{
+    background-color: #ba2d02
+}
+
+
+.send{
+    width: 100px;
+    height: 50px;
+    border-radius: 30px;
+    background-color: #3678e1;
+    color: white;
+    border: none;
+    margin-left: 90%;
+    font-size: 17px;
+}
+
+.send:hover{
+    box-shadow: 0px 0px 1px 1px #1c66dc;
+}
+
+#receiverSpan{
+    opacity: 0;
+}
+
+#senderSpan{
+    opacity: 0;
+}
+
+#titleSpan{
+    opacity: 0;
+    
+}
+
+.on{
+    transform: translateY(-35%);
+    position: absolute;
+    top:0%;
+    font-size: 17px;
+    /* background-color: rgba(252, 25, 60, 0.1); */
+    background-color: #b2cefc;
+    padding: 5px 15px; 
+    border-radius: 10px;
+    opacity: 1;
+}
+
+

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <script src="../jh/js/header.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>이메일 페이지</title>
+    <link rel="stylesheet" href="../jh/style.css">
+    <link rel="stylesheet" href="css/emailReceive.css">
+    <script defer src="js/main.js"></script>
+    <script src="https://kit.fontawesome.com/670510c783.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../ym/css/newsolusion.css">
+</head>
+
+<body>
+    <div class="upMenu-header" style="font-size: 16px; font-family: Arial, sans-serif;">
+    </div>
+    <script>
+        fetch('../jh/component/header.html').then(response => response.text()).then(data => {
+            document.querySelector('.upMenu-header').innerHTML = data;
+        });
+    </script>
+    <hr style="opacity: 0.3; margin-top: 2em; font-size: 16px;">
+
+
+    <div class="container">
+
+
+        <nav class="sidebar">
+            <button class="compose-sidebar">이메일 쓰기</button>
+            <ul>
+                <li><a href="emailReceive.html">받은편지함</a></li>
+                <li><a href="emailSend.html">보낸편지함</a></li>
+                <li><a href="emailJunk.html">스팸</a></li>
+                <li><a href="emailDelete.html">삭제된 편지함</a></li>
+            </ul>
+        </nav>
+
+        <main class="main-content">
+            <div class="email-list">
+                <div class="btn-list">
+                    <input type="checkbox" class="mainCheck">
+                    <button class="read">읽음</button>
+                    <button class="notRead">안읽음</button>
+                    <button class="delete">삭제</button>
+                </div>
+                <div class="email-item">
+                    <input type="checkbox" class="check">
+                    <i class="fa-light far  fa-envelope"></i>
+                    <span class="sender">보낸사람1</span>
+                    <span class="subject">이메일 제목1</span>
+                    <span class="date">2024-09-23</span>
+                </div>
+                <div class="email-item">
+                    <input type="checkbox" class="check">
+                    <i class="fa-light far fa-envelope"></i>
+                    <span class="sender">보낸사람2</span>
+                    <span class="subject">이메일 제목2</span>
+                    <span class="date">2024-09-22</span>
+                </div>
+                <div class="email-item">
+                    <input type="checkbox" class="check">
+                    <i class="fa-light far  fa-envelope"></i>
+                    <span class="sender">보낸사람3</span>
+                    <span class="subject">이메일 제목3</span>
+                    <span class="date">2024-09-21</span>
+                </div>
+                <!-- 추가 이메일 항목을 여기에 넣을 수 있습니다 -->
+
+            </div>
+        </main>
+    </div>
+</body>
+
+</html>

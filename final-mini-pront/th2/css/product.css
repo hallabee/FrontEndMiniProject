@@ -1,0 +1,122 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background-color: #f9f9f9;
+    font-size: 1.5vw;
+}
+
+.header {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.header #list{
+    position: absolute;
+    left: 1%;
+    font-size: 1.5vw;
+}
+
+.header-h2{
+    margin-left: 5%;
+}
+
+.navbar ul {
+    list-style: none;
+    display: flex;
+}
+
+.navbar ul li {
+    margin: 0 15px;
+}
+
+.navbar a {
+    color: white;
+    text-decoration: none;
+    padding: 5px;
+}
+
+nav ul li a:hover {
+    background: #fff;
+    color: black;  /* 색상을 원하는 대로 변경할 수 있습니다 */
+}
+
+.product-detail-container {
+    display: flex;
+    padding: 20px;
+    max-width: 70%;
+    margin: auto;
+    font-size: 1vw;
+}
+
+.product-image {
+    flex: 1;
+}
+
+.product-image img {
+    width: 100%;
+    height: auto;
+}
+
+.product-details {
+    flex: 2;
+    padding: 20px;
+}
+
+.product-name {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.product-description {
+    margin-bottom: 15px;
+}
+
+.product-price {
+    font-size: 20px;
+    color: #4CAF50;
+    margin-bottom: 15px;
+}
+
+.quantity {
+    margin-bottom: 15px;
+}
+
+.add-to-cart, .buy-now {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 1vw 1.5vw;
+    cursor: pointer;
+    margin-right: 10px;
+    font-size: 1vw;
+}
+
+.add-to-cart:hover, .buy-now:hover {
+    background-color: #45a049;
+}
+
+.imgs{
+    display: block;
+    margin: 0 auto;
+    width: 70%;
+}
+
+footer {
+    text-align: center;
+    padding: 10px 0;
+    background-color: #f1f1f1;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    font-size: 1vw;
+}

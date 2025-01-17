@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <link rel="stylesheet" href="../jh/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="../jh/js/header.js"></script>
+    <link rel="stylesheet" href="im.css">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0" />
+    <title>흑백</title>
+
+
+    <style>
+        /* 기본 스타일 설정 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            width: 80vw;
+            height: 200vh;
+            margin-left: 20vw;
+            font-family: Arial, sans-serif;
+            background-color: #fff;
+            color: #000;
+            line-height: 1.6;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        body * {
+            padding-left: 0;
+            margin-left: 0;
+        }
+
+        .dark-mode {
+            background-color: #121212;
+            color: #fff;
+        }
+
+        .container {
+            display: block;
+        }
+
+        /* 왼쪽 사이드바 스타일 */
+        .sidebar {
+            width: 20vw;
+            background-color: white;
+            box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100%;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: flex-start;
+            transition: background-color 0.3s;
+            padding: 0px;
+        }
+
+        .dark-mode .sidebar {
+            background-color: #333;
+        }
+
+        .logo {
+            font-size: 32px;
+            font-weight: bold;
+            color: #000;
+            margin-bottom: 20px;
+        }
+
+        .dark-mode .logo {
+            color: #fff;
+        }
+
+        .country {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .time {
+            font-size: 36px;
+        }
+
+        /* 화살표 스타일 */
+        .scroll-arrow {
+            margin-top: 20px;
+            cursor: pointer;
+            font-size: 48px;
+            font-weight: bold;
+            color: #000;
+            text-align: center;
+        }
+
+        .dark-mode .scroll-arrow {
+            color: #fff;
+        }
+
+        /* 메인 콘텐츠 스타일 */
+        .main-content {
+            background-color: #fff;
+            color: #000;
+            transition: background-color 0.3s, color 0.3s;
+            margin-left: 0;
+            margin: auto;
+            overflow-y: hidden;
+        }
+
+
+        .dark-mode .main-content {
+            background-color: #222;
+            color: #fff;
+        }
+
+        /* 콘텐츠 영역 스타일 */
+        .cont__area {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        /* 기본 반투명 설정 */
+        .cont__item {
+            width: calc(33.333% - 20px);
+            margin-bottom: 30px;
+            opacity: 0.5;
+            /* 반투명 */
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+
+        /* 마우스 올렸을 때 선명해지도록 */
+        .cont__item:hover {
+            opacity: 1;
+            /* 선명 */
+            transform: scale(1.05);
+            /* 약간 확대 */
+        }
+
+        .cont__link {
+            text-decoration: none;
+            color: inherit;
+            display: block;
+            border: 1px solid #000;
+            padding: 20px;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .dark-mode .cont__link {
+            border-color: #fff;
+        }
+
+        .cont__link:hover .title,
+        .cont__link:hover .desc {
+            color: #ff6347;
+            /* 마우스를 올렸을 때 글자색 변경 */
+        }
+
+        .cont__link:hover {
+            background-color: #f0f0f0;
+        }
+
+        .dark-mode .cont__link:hover {
+            background-color: #333;
+        }
+
+        /* 이미지 스타일 */
+        .cont__image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            margin-bottom: 10px;
+        }
+
+        /* 동영상 스타일 */
+        .cont__video {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            margin-bottom: 10px;
+        }
+
+        /* 푸터 스타일 */
+        .footer {
+            background-color: #000;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+            margin-top: 50px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .dark-mode .footer {
+            background-color: #333;
+        }
+
+        /* 우측 상단 다크모드 전환 버튼 */
+        .toggle-theme-btn {
+            position: relative;
+            padding: 5px;
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+        }
+
+        .toggle-theme-btn img {
+            width: 30px;
+            height: 30px;
+            transition: opacity 0.3s;
+        }
+
+        .dark-mode .toggle-theme-btn img.light-mode-icon {
+            opacity: 0;
+        }
+
+        .dark-mode .toggle-theme-btn img.dark-mode-icon {
+            opacity: 1;
+        }
+
+        .toggle-theme-btn img.dark-mode-icon {
+            opacity: 0;
+        }
+
+        /* 반응형 디자인 */
+        @media screen and (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
+
+            .sidebar {
+                width: 100%;
+                height: auto;
+                position: static;
+                text-align: center;
+            }
+
+            .main-content {
+                width: 100%;
+                margin-left: 0;
+            }
+
+            .cont__item {
+                width: calc(100% - 20px);
+            }
+        }
+
+        /* 헤더 스타일 */
+        header {
+            display: block;
+            background-color: #f0f0f0;
+            margin-left: 0;
+        }
+
+        header * {
+            color: white;
+        }
+
+        header .inner {
+            display: block;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        header h1 a {
+            font-size: 24px;
+            text-decoration: none;
+            color: #000;
+        }
+
+        header #gnb {
+            display: block;
+            list-style: none;
+            gap: 20px;
+        }
+
+        header #gnb li a {
+            text-decoration: none;
+            color: #000;
+        }
+
+        header .util {
+            display: block;
+            list-style: none;
+            gap: 15px;
+        }
+
+        header .util li a {
+            text-decoration: none;
+            color: #000;
+        }
+
+        /* 푸터 스타일 */
+        footer {
+            background-color: #000;
+            color: #fff;
+            padding: 20px 0;
+        }
+
+        footer .inner {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        footer .upper {
+            display: block;
+            justify-content: space-between;
+        }
+
+        footer ul {
+            list-style: none;
+            display: block;
+            gap: 15px;
+        }
+
+        footer ul li a {
+            text-decoration: none;
+            color: #fff;
+        }
+
+        footer .lower address,
+        footer .lower p {
+            margin-bottom: 10px;
+        }
+
+        .sort-btn-container {
+            margin-top: 1.5em;
+            float: right;
+        }
+
+        .main-content {
+            padding: 0;
+        }
+
+        .im-body {
+            height: 120vh;
+        }
+    </style>
+
+
+
+    <script>
+        /* 현재 시간을 업데이트하는 함수 */
+        function updateTime() {
+            const now = new Date();
+            const hours = String(now.getHours()).padStart(2, '0');
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            const seconds = String(now.getSeconds()).padStart(2, '0');
+            document.getElementById('time').textContent = `${hours}:${minutes}:${seconds}`;
+        }
+
+        /* 페이지 하단으로 스크롤하는 함수 */
+        function scrollToBottom() {
+            window.scrollTo({
+                top: document.body.scrollHeight,
+                behavior: 'smooth'
+            });
+        }
+
+        /* 페이지 상단으로 스크롤하는 함수 */
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+
+        /* 콘텐츠 정렬 함수 */
+        function sortContent(order) {
+            const contentArea = document.querySelector('.cont__area');
+            const items = Array.from(contentArea.children);
+
+            // 정렬 전에 모든 아이템을 숨기기
+            items.forEach(item => {
+                item.classList.remove('active'); // active 클래스를 제거하여 숨김
+                item.style.opacity = "0.5"; // 원래 효과 유지
+                item.style.transform = "translateY(20px)"; // 아래에서 올라오는 효과
+            });
+
+            // 오름차순 또는 내림차순으로 정렬
+            if (order === 'asc') {
+                items.sort((a, b) => a.querySelector('.title').textContent.localeCompare(b.querySelector('.title').textContent));
+            } else if (order === 'desc') {
+                items.sort((a, b) => b.querySelector('.title').textContent.localeCompare(a.querySelector('.title').textContent));
+            }
+
+            // 아이템을 다시 추가하고 순차적으로 애니메이션 적용
+            items.forEach((item, index) => {
+                contentArea.appendChild(item); // 재정렬된 아이템을 다시 추가
+                setTimeout(() => {
+                    item.style.opacity = "1"; // 애니메이션 효과
+                    item.style.transform = "translateY(0)"; // 제자리로 돌아옴
+                }, index * 100); // 순차적으로 애니메이션 적용
+            });
+        }
+
+        /* 다크모드/화이트모드 전환 함수 */
+        function toggleTheme() {
+            document.querySelector('.dk-container').classList.toggle('dark-mode');
+        }
+
+        setInterval(updateTime, 1000);
+        window.onload = updateTime;
+    </script>
+</head>
+
+<body class="im-body">
+    <div class="bgcolor wpanel"
+        style="display: block; background-color: white; height: 5em; z-index: 5; box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1); width: 80vw; margin-bottom: 5px;">
+        <div class="upMenu-header" style="font-size: 16px; font-family: Arial, sans-serif; margin-bottom: 2em;">
+        </div>
+        <script>
+            fetch('../jh/component/header.html').then(response => response.text()).then(data => {
+                document.querySelector('.upMenu-header').innerHTML = data;
+            });
+        </script>
+    </div>
+
+    <div class="dk-container">
+        <!-- 다크모드/화이트모드 전환 버튼 -->
+        <button id="themeToggleBtn" class="toggle-theme-btn" onclick="toggleTheme()"
+            style="display: block; float: right; right: 1em;">
+            <img src="img/sun.png" alt="화이트모드" class="light-mode-icon" style="display: block;">
+            <img src="img/moon.png" alt="다크모드" class="dark-mode-icon" style="display: block;">
+        </button>
+
+        <header style="background-color: white;">
+            <div class="inner" style="padding-bottom: 2em; padding-top: 1em;">
+                <h1><a href="#" style="margin-left: 0;">DCODLAB</a></h1>
+                <ul class="util" style="display: flex;
+            flex-direction: row;
+            float: right; margin-left: 35vh;">
+                    <li><a href="#">Contact</a></li>
+                    <li><a href="#">Help</a></li>
+                    <li><a href="#">Login</a></li>
+                    <li><a href="#">Join</a></li>
+                    <li><a href="#">Site Map</a></li>
+                </ul>
+                <ul id="gnb" style="display: flex;
+            flex-direction: row; float: right;">
+                    <li><a href="#">DEPARTMENT</a></li>
+                    <li><a href="#">GALLERY</a></li>
+                    <li><a href="#">YOUTUBE</a></li>
+                    <li><a href="#">COMMUNITY</a></li>
+                    <li><a href="#">LOCATION</a></li>
+                </ul>
+            </div>
+        </header>
+        <hr style="opacity: 0.3;">
+
+        <div class="container">
+            <!-- 왼쪽 사이드바 -->
+            <aside class="sidebar">
+                <div class="logo">흑백</div>
+                <div class="country">대한민국</div>
+                <div class="time" id="time"></div>
+
+                <!-- 아래 화살표 추가 -->
+                <div class="scroll-arrow" onclick="scrollToBottom()">↓</div>
+                <!-- 위 화살표 추가 -->
+                <div class="scroll-arrow" onclick="scrollToTop()">↑</div>
+            </aside>
+
+            <!-- 메인 콘텐츠 -->
+            <main class="main-content">
+                <!-- 정렬 버튼 -->
+                <div class="sort-btn-container">
+                    <button class="sort-btn" onclick="sortContent('asc')">오름차순</button>
+                    <button class="sort-btn" onclick="sortContent('desc')">내림차순</button>
+                </div>
+                <style>
+                    /* 정렬 버튼을 우측으로 옮기고 간격을 조정 */
+                    .sort-btn-container {
+                        display: block;
+                        right: 30px;
+                        top: 20px;
+                        /* 살짝 위로 올림 */
+                        display: block;
+                        gap: 10px;
+                    }
+
+                    /* 콘텐츠와의 간격 추가 */
+                    .main-content__inner {
+                        padding-top: 60px;
+                        /* 콘텐츠와 버튼 간격 추가 */
+                    }
+
+                    /* 해상도 100% 기준으로 화면이 다 보이게 조정 */
+                    .main-content {
+                        max-height: 100vh;
+                        overflow-y: auto;
+                    }
+                </style>
+                <div class="main-content__inner">
+                    <div class="cont__area">
+                        <!-- 이미지 콘텐츠 -->
+                        <div class="cont__item active">
+                            <a href="https://www.google.com/" class="cont__link">
+                                <img src="img/google.png" alt="이미지 1" class="cont__image">
+                                <div class="text-wrap">
+                                    <strong class="title">GOOGLE</strong>
+                                    <p class="desc">구글은 구글 검색을 중심으로 스마트폰 운영체제인 안드로이드와 유튜브 사업, 클라우드 사업을 하는 미국의 기업이다. 다양한
+                                        구글
+                                        서비스들과 함께 '전 세계의 모든 정보들을 체계화하여 모든 사용자가 유익하게 사용할 수 있도록 한다'라는 사명을 가지고 사업을 하고 있다.
+                                    </p>
+                                </div>
+                            </a>
+                        </div>
+                        <!-- 동영상 콘텐츠 -->
+                        <div class="cont__item active">
+                            <a href="https://post.naver.com/viewer/postView.naver?volumeNo=27900871&memberNo=42277144"
+                                class="cont__link">
+                                <video class="cont__video" autoplay muted loop>
+                                    <source src="img/intro.mp4" type="video/mp4">
+                                    Your browser does not support the video tag.
+                                </video>
+                                <div class="text-wrap">
+                                    <strong class="title">집에 가고 싶다 증후군</strong>
+                                    <p class="desc">직장인 대부분이 앓고 있다는 집에 가고 싶다 증후군(Homesickness-syndrome)을 아시나요? 직장인뿐만
+                                        아니라, 일부
+                                        학생들도 이 병을 앓고 있다고 하는데요. 집을 막 나왔음에도 다시 '집에 가고 싶다'라고 느끼는 것인데요. 강력한 귀소본능을 느끼고 집중력과
+                                        활동력
+                                        저하를 불러옵니다. 심하게는 집에 있을 때도 '집에 가고 싶다'는 생각이 든다고 해요.</p>
+                                </div>
+                            </a>
+                        </div>
+
+                        <!-- 추가 콘텐츠 -->
+                        <div class="cont__item active">
+                            <a href="detail3.html" class="cont__link">
+                                <video class="cont__video" autoplay muted loop>
+                                    <source src="img/loop.mp4" type="video/mp4">
+                                    Your browser does not support the video tag.
+                                </video>
+                                <div class="text-wrap">
+                                    <strong class="title">콘텐츠 추가</strong>
+                                    <p class="desc">설명 추가</p>
+                                </div>
+                            </a>
+                        </div>
+
+                        <div class="cont__item active">
+                            <a href="detail4.html" class="cont__link">
+                                <img src="img/brand4.jpg" alt="이미지 3" class="cont__image">
+                                <div class="text-wrap">
+                                    <strong class="title">추가된 콘텐츠</strong>
+                                    <p class="desc">또 다른 설명</p>
+                                </div>
+                            </a>
+                        </div>
+
+                        <!-- 추가된 콘텐츠 -->
+                        <div class="cont__item active">
+                            <a href="detail5.html" class="cont__link">
+                                <img src="img/member7.jpg" alt="이미지 4" class="cont__image">
+                                <div class="text-wrap">
+                                    <strong class="title">새로운 콘텐츠 1</strong>
+                                    <p class="desc">설명 1</p>
+                                </div>
+                            </a>
+                        </div>
+
+                        <div class="cont__item active">
+                            <a href="https://www.coupang.com/?src=1042016&spec=10304903&addtag=900&ctag=HOME&lptag=%EC%BF%A0%ED%8C%A1&itime=20240926093015&pageType=HOME&pageValue=HOME&wPcid=17245806755850784565008&wRef=www.google.com&wTime=20240926093015&redirect=landing&gclid=CjwKCAjw6c63BhAiEiwAF0EH1JGBpzwib9CCBj_X_xHMgNrCGXElXJGAjsSx-OpQiOhfhckIBzyQHBoCIIsQAvD_BwE&mcid=94c106a892384fe59ea8bdb1ba6db4b7&network=g"
+                                class="cont__link">
+                                <img src="img/coupang.png" alt="이미지 5" class="cont__image">
+                                <div class="text-wrap">
+                                    <strong class="title">새로운 콘텐츠 2</strong>
+                                    <p class="desc">설명 2</p>
+                                </div>
+                            </a>
+                        </div>
+
+                        <div class="cont__item active">
+                            <a href="https://youtu.be/6yN0mbcLQ8o?si=52Igk09zOlSmjwL4" class="cont__link">
+                                <img src="img/Mudryk.png" alt="이미지 6" class="cont__image">
+                                <div class="text-wrap">
+                                    <strong class="title">새로운 콘텐츠 3</strong>
+                                    <p class="desc">설명 3</p>
+                                </div>
+                            </a>
+                        </div>
+
+                        <div class="cont__item active">
+                            <a href="https://youtu.be/S1yLy96voPo?si=-pCxkosbHP3HMa0r" class="cont__link">
+                                <img src="img/Mudryk.png" alt="이미지 6" class="cont__image">
+                                <div class="text-wrap">
+                                    <strong class="title">새로운 콘텐츠 3</strong>
+                                    <p class="desc">설명 3</p>
+                                </div>
+                            </a>
+                        </div>
+
+                        <div class="cont__item active">
+                            <a href="https://youtu.be/RHYMkCnr5PQ?si=CsgkL-sgVVIT5X6u" class="cont__link">
+                                <img src="img/Mudryk.png" alt="이미지 6" class="cont__image">
+                                <div class="text-wrap">
+                                    <strong class="title">새로운 콘텐츠 3</strong>
+                                    <p class="desc">설명 3</p>
+                                </div>
+                            </a>
+                        </div>
+
+                    </div>
+                </div>
+            </main>
+        </div>
+
+        <footer>
+            <div class="inner">
+                <div class="upper">
+                    <h1>DCODLAB</h1>
+                    <ul>
+                        <li><a href="#">Policy</a></li>
+                        <li><a href="#">Terms</a></li>
+                        <li><a href="#">Family Site</a></li>
+                        <li><a href="#">Site Map</a></li>
+                    </ul>
+                </div>
+                <div class="lower">
+                    <address>
+                        <p>TEL: 031-111-1234 | C.P: 010-1234-5678</p>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas, facere.</p>
+                    </address>
+                    <p>&copy; 2024 DCODLAB. All rights reserved.</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <script src="../jh/js/header.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../jh/style.css">
+    <link rel="stylesheet" href="css/emailWritePage.css">
+    <script defer src="js/emailWritePage.js"></script>
+    <link rel="stylesheet" href="../ym/css/newsolusion.css">
+</head>
+
+<body>
+    <div class="upMenu-header" style="font-size: 16px; font-family: Arial, sans-serif;">
+    </div>
+    <script>
+        fetch('../jh/component/header.html').then(response => response.text()).then(data => {
+            document.querySelector('.upMenu-header').innerHTML = data;
+        });
+    </script>
+    <hr style="opacity: 0.3; margin-top: 2em; font-size: 16px;">
+
+
+    <div class="container">
+        <header class="header">
+            <h1>mail</h1>
+            <div class="user-info">
+                <span>사용자 이름</span>
+                <button class="logout">로그아웃</button>
+            </div>
+        </header>
+
+        <nav class="sidebar">
+            <ul>
+                <li><a href="emailReceive.html">받은편지함</a></li>
+                <li><a href="emailSend.html">보낸편지함</a></li>
+                <li><a href="emailJunk.html">스팸</a></li>
+                <li><a href="emailDelete.html">삭제된 편지함</a></li>
+            </ul>
+        </nav>
+
+        <main class="main-content">
+            <div class="sender">
+                <input type="text" id="sender" size="50" placeholder="보내는사람">
+                <span id="senderSpan"></span>
+            </div>
+            <div class="receiver">
+                <input type="text" id="receiver" size="50" placeholder="받는사람">
+                <span id="receiverSpan"></span>
+            </div>
+            <div class="title">
+                <input type="text" id="title" size="50" placeholder="제목">
+                <span id="titleSpan"></span>
+            </div>
+            <div class="email-content">
+                <textarea name="content"></textarea>
+            </div>
+            <div class="sendBtn">
+                <button class="send">보내기</button>
+            </div>
+        </main>
+
+    </div>
+</body>
+
+</html>

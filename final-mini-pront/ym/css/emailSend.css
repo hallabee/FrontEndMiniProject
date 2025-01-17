@@ -1,0 +1,185 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    background-color: #f4f4f4;
+    -webkit-user-select:none;
+  -moz-user-select:none;
+  -ms-user-select:none;
+  user-select:none
+}
+
+.container {
+    display: flex;
+    height: 100vh;
+}
+
+.header {
+    background-color: #1966e2;
+    color: white;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed; /* 고정 위치 */
+    top: 0; /* 상단에 배치 */
+    left: 0;
+    right: 0;
+    z-index: 1000; /* 다른 요소 위에 표시 */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar {
+    width: 220px;
+    background-color: #ffffff;
+    border-right: 1px solid #ddd;
+    padding: 10px 0;
+    margin-top: 110px; /* 헤더 높이 만큼 여백 추가 */
+}
+
+.sidebar ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.sidebar li {
+    padding: 20px;
+    margin: 10px;
+}
+
+.sidebar ul li:nth-of-type(2){
+    background: rgb(220, 220, 222);
+}
+
+.sidebar a {
+    text-decoration: none;
+    color: #333;
+    display: block;
+}
+
+
+
+.main-content {
+    flex: 1; /* 남은 공간을 차지하도록 설정 */
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    margin-top: 100px; /* 헤더 높이 만큼 여백 추가 */
+}
+
+.email-header {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 10px;
+}
+
+.compose {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.email-list {
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    flex: 1;
+}
+
+.email-item {
+    display: flex;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+.check{
+    margin-left: 5px;
+}
+.email-item i{
+    margin-left: 40px;
+    margin-top: 3px;
+}
+.sender{
+    margin-left: 80px;
+}
+.subject{
+    margin-left: 200px;
+    width: 700px;
+}
+
+.logout {
+    background-color: #ff5722;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.sidebar button {
+    margin: 10px; /* 버튼 여백 추가 */
+    padding: 10px;
+    background-color: #007bff; /* 버튼 배경 색상 */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: calc(100% - 20px); /* 여백을 고려한 너비 */
+}
+
+.sidebar button:hover {
+    background-color: #0056b3; /* 버튼 호버 효과 */
+}
+
+.header button:hover{
+    background-color: #ba2d02
+}
+
+.email-list .btn-list{
+    padding: 10px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #ddd;
+    
+}
+
+.email-list .btn-list .read{
+    background-color: white;
+    width: 70px;
+    height: 40px;
+    margin-right: 10px;
+    font-size: 15px;
+    border: none; 
+}
+.email-list .btn-list .read:hover{
+    border: 1px solid rgb(172, 172, 172);
+}
+
+
+
+.email-list .btn-list .notRead{
+    background-color: white;
+    width: 70px;
+    height: 40px;
+    margin-right: 10px;
+    font-size: 15px;
+    border: none;
+}
+.email-list .btn-list .notRead:hover{
+    border: 1px solid rgb(172, 172, 172);
+}
+
+
+.email-list .btn-list .delete{
+    background-color: white;
+    width: 70px;
+    height: 40px;
+    font-size: 15px;
+    border: none;
+}
+.email-list .btn-list .delete:hover{
+    border: 1px solid rgb(172, 172, 172);
+}
+

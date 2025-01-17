@@ -1,0 +1,137 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+}
+
+.header {
+
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* 공간을 추가하여 요소 간의 간격 조정 */
+}
+
+.header #list{
+    position: absolute;
+    left: 1%;
+    font-size: 1.5vw;
+}
+
+.header h2{
+    margin-left: 5%;
+}
+
+.navbar ul {
+    list-style: none;
+}
+
+.navbar ul li {
+    display: inline;
+    margin: 0 15px;
+}
+
+.navbar a {
+    color: white;
+    text-decoration: none;
+    padding: 5px;
+}
+
+nav ul li a:hover {
+    background: #fff;
+    color: black;  /* 색상을 원하는 대로 변경할 수 있습니다 */
+}
+
+.search-container {
+    display: flex; /* Flexbox로 가로 배치 */
+    align-items: center; /* 수직 중앙 정렬 */
+    margin-left: 20px; /* 검색창과 제목 간의 간격 */
+}
+
+#search {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 20vw;
+}
+
+#search-button {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 8px 10px;
+    margin-left: 5px;
+}
+
+.product-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+.product-card {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 15px;
+    margin: 10px;
+    text-align: center;
+    width: 200px;
+}
+
+.product-card img {
+    width: 100%;
+    height: auto;
+}
+
+.product-card img:hover{
+    transform: scale(1.5);
+}
+
+.product-card h4{
+    font-size: 1.5vw;
+}
+
+.product-card p{
+    font-size: 1.2vw;
+}
+
+.add-to-cart {
+    background-color: #4CAF50;
+    color: white;
+    margin-top: 10px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.add-to-cart:hover {
+    background-color: #45a049;
+}
+
+.footer {
+    background-color: #f1f1f1;
+    text-align: center;
+    font-size: 1vw;
+    padding: 10px 0;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+}
+
+@media (max-height: 400px){
+    .navbar{
+        display: none;
+    }
+}
+
